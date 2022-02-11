@@ -1,5 +1,6 @@
 /**
- * Server
+ *
+ * Event portal Server
  */
 "use strict";
 const express = require("express");
