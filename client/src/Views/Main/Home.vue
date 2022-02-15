@@ -1,22 +1,10 @@
 <template>
-  <Navbar/>
-  <div class="hello">
-    <h1>{{msg}}</h1>
-  </div>
-
+  <h1>This is the homepage</h1>
 </template>
 
 <script>
-import Navbar from '../../components/Main/Navbar'
-
 export default {
   name: 'BaseWebsite',
-  props: {
-    msg: String
-  },
-  components: {
-    Navbar
-  }
 }
 </script>
 

@@ -1,16 +1,13 @@
 <template>
-  <BaseWebsite msg="HELLOOO"/>
-  <router-view/>
+  <Base/>
 </template>
 
 <script>
-import BaseWebsite from './Views/Main/BaseWebsite.vue'
 
+import Base from "@/Views/Main/Base";
 export default {
   name: 'App',
-  components: {
-    BaseWebsite
-  }
+  components: {Base},
 }
 </script>
 
