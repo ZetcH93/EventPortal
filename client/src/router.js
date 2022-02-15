@@ -7,11 +7,13 @@ const routes = [
         path: "/",
         name: "Home",
         component: Home,
+        props:{ title:'Welcome to the Event Portal'}
     },
     {
         path: "/about",
         name: "About",
         component: About,
+        props:{ title:'About'}
     },
 ];
 

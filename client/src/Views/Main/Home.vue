@@ -1,5 +1,9 @@
 <template>
   <h1>This is the homepage</h1>
+  <!-- Organization bubblor -->
+
+  <!-- Events grejerna -->
+
 </template>
 
 <script>
