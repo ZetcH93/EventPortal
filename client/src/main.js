@@ -1,9 +1,11 @@
 import '@babel/polyfill'
 import 'mutationobserver-shim'
 import 'bootstrap'
-import App from './App'
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 
-import { createApp } from 'vue'
+import App from './App'
+import {createApp} from 'vue'
 import router from "@/router";
 
 
