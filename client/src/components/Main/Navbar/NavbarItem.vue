@@ -13,5 +13,8 @@ export default {
 </script>
 
 <style scoped>
-
+.nav-item:hover {
+  color: #DC8045 !important;
+  font-weight: 900;
+}
 </style>
