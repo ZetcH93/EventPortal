@@ -17,32 +17,52 @@ const routes = [
         path: "/about",
         name: "About",
         component: About,
+        meta: {
+            title: 'About'
+        }
     },
     {
         path: "/news",
         name: "News",
         component: News,
+        meta: {
+            title: 'News'
+        }
     },
     {
         path: "/organizations",
         name: "Organizations",
         component: Organizations,
+        meta: {
+            title: 'Organizations'
+        }
     },
     {
         path: "/contact",
         name: "Contact",
         component: Contact,
+        meta: {
+            title: 'Contact'
+        }
     },
     {
         path: "/login",
         name: "Login",
         component: Login,
+        meta: {
+            title: 'Login'
+        }
     },
 ];
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
+});
+
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title || 'EventPortal';
+    next();
 });
 
 export default router;

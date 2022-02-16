@@ -1,7 +1,7 @@
 <template>
   <div class="banner-image">
     <div class="banner-text">
-      <h1>{{ $route.name }}</h1>
+      <h1>{{ $router.name }}</h1>
     </div>
   </div>
 </template>
