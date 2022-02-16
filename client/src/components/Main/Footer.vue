@@ -7,11 +7,12 @@
         <!-- column for the information and event-portal logo -->
         <h5 class="title"><b>Event<span
             style="color: #DC8045">Portal</span></b></h5>
-        <p v-if="$route.meta['description']">{{ $route.meta['description'] }}</p>
+        <p>The Event Portal is made for organizations and their memebers. Here you will find news, events and be able to
+          manage your own registered organization when you have logged in.</p>
       </div>
       <!-- column for the links -->
       <div class="col-sm d-flex flex-column align-items-center">
-        <router-link :to="{ name: 'Home' }" class="nav-item nav-link">Home</router-link>
+        <router-link :to="{ name: 'Home' }" class="nav-item nav-link pt-0">Home</router-link>
         <router-link :to="{ name: 'About' }" class="nav-item nav-link">About</router-link>
         <router-link :to="{ name: 'News' }" class="nav-item nav-link">News</router-link>
         <router-link :to="{ name: 'Contact' }" class="nav-item nav-link">Contact</router-link>
@@ -19,7 +20,7 @@
       </div>
       <!-- column for the contact-form, made so that the contact-form disappears when it gets smaller  -->
       <div class="col-sm d-none d-lg-block px-5">
-        <p>Contact</p>
+        <h5>Contact us</h5>
         <div class="mb-3">
           <input id="exampleFormControlInput1" class="form-control" placeholder="Name" type="text">
         </div>
