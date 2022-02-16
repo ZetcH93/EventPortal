@@ -1,14 +1,17 @@
 <template>
-  <h1>This is the homepage</h1>
   <!-- Organization bubblor -->
-
-  <!-- Events grejerna -->
-
+  <OrganizationBubbles/>
+  <!-- Events -->
+  <Events/>
 </template>
 
 <script>
+import Events from "@/components/Main/HomeView/Events";
+import OrganizationBubbles from "@/components/Main/HomeView/OrganizationBubbles";
+
 export default {
   name: 'BaseWebsite',
+  components: {OrganizationBubbles, Events},
 }
 </script>
 
