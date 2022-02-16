@@ -36,14 +36,13 @@ export default {
 }
 
 .btn {
-  border-color: #DC8045;
+  border-color: #b95d21;
   background-color: #DC8045;
   color: white;
 }
 
 .btn:hover {
-  color: #DC8045;
-  background-color: white;
+  background-color: #b45a1d;
 }
 
 </style>
