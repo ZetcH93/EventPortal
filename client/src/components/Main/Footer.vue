@@ -1,7 +1,7 @@
 <template>
   <!-- Footer -->
   <div class="sloped"></div>
-  <div class="container-fluid">
+  <div class="container-fluid px-5 pb-3">
     <div class="row">
       <div class="col-sm">
         <!-- column for the information and event-portal logo -->
@@ -10,7 +10,7 @@
         <p v-if="$route.meta['description']">{{ $route.meta['description'] }}</p>
       </div>
       <!-- column for the links -->
-      <div class="col-sm">
+      <div class="col-sm d-flex flex-column align-items-center">
         <router-link :to="{ name: 'Home' }" class="nav-item nav-link">Home</router-link>
         <router-link :to="{ name: 'About' }" class="nav-item nav-link">About</router-link>
         <router-link :to="{ name: 'News' }" class="nav-item nav-link">News</router-link>
@@ -18,10 +18,10 @@
         <router-link :to="{ name: 'Login' }" class="nav-item nav-link">Login</router-link>
       </div>
       <!-- column for the contact-form, made so that the contact-form disappears when it gets smaller  -->
-      <div class="col-sm d-none d-lg-block ">
+      <div class="col-sm d-none d-lg-block px-5">
         <p>Contact</p>
         <div class="mb-3">
-          <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+          <input id="exampleFormControlInput1" class="form-control" placeholder="Name" type="text">
         </div>
         <div class="mb-3">
           <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="Email">
@@ -67,6 +67,7 @@ export default {
 .sloped {
   height: 200px;
   z-index: -1;
+  margin-bottom: -1px;
   clip-path: polygon(0 0, 100% 88%, 100% 100%, 0% 100%); /* This is where you change how the blue footer should cut*/
   background-color: #00143D;
 }
