@@ -1,7 +1,8 @@
 <template>
   <div class="banner-image">
     <div class="banner-text">
-      <h1>{{ $route.name }}</h1>
+      <h1 v-if="$route.meta['viewTitle']">{{ $route.meta['viewTitle'] }}</h1>
+      <p v-if="$route.meta['description']">{{ $route.meta['description'] }}</p>
     </div>
   </div>
 </template>
