@@ -4,7 +4,13 @@
       <img :src="image" alt="test" class="card-img-top">
       <div class="card-body shadow-sm rounded">
         <h5 class="card-title">{{ event.name }}</h5>
-        <p class="card-text">{{ event.description }}</p>
+        <p class="card-text">{{ event.description }}
+          <br>
+          <router-link :to="{ name: 'About' }" class="float-right btn btn-sm float-end" type="button">
+            Read more
+          </router-link>
+        </p>
+
       </div>
     </div>
   </div>
@@ -28,4 +34,15 @@ export default {
 .card {
   z-index: 1;
 }
+
+.btn {
+  border-color: #DC8045;
+  color: #DC8045;
+}
+
+.btn:hover {
+  color: white;
+  background-color: #DC8045;
+}
+
 </style>
