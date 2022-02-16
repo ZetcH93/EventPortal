@@ -12,13 +12,18 @@ const routes = [
         path: "/",
         name: "Home",
         component: Home,
+        meta: {
+            viewTitle: 'Welcome to the Event Portal!',
+            desc: 'Find new organizations to join, upcoming events or news!'
+        }
     },
     {
         path: "/about",
         name: "About",
         component: About,
         meta: {
-            title: 'About'
+            title: 'About',
+            viewTitle: 'About',
         }
     },
     {
@@ -26,7 +31,8 @@ const routes = [
         name: "News",
         component: News,
         meta: {
-            title: 'News'
+            title: 'News',
+            viewTitle: 'News',
         }
     },
     {
@@ -34,7 +40,8 @@ const routes = [
         name: "Organizations",
         component: Organizations,
         meta: {
-            title: 'Organizations'
+            title: 'Organizations',
+            viewTitle: 'Organizations',
         }
     },
     {
@@ -42,7 +49,8 @@ const routes = [
         name: "Contact",
         component: Contact,
         meta: {
-            title: 'Contact'
+            title: 'Contact',
+            viewTitle: 'Contact',
         }
     },
     {
@@ -50,7 +58,8 @@ const routes = [
         name: "Login",
         component: Login,
         meta: {
-            title: 'Login'
+            title: 'Login',
+            viewTitle: 'Login',
         }
     },
 ];
