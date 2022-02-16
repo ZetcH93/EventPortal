@@ -14,7 +14,7 @@ const routes = [
         component: Home,
         meta: {
             viewTitle: 'Welcome to the Event Portal!',
-            desc: 'Find new organizations to join, upcoming events or news!'
+            description: 'Find new organizations to join, upcoming events or news!'
         }
     },
     {
