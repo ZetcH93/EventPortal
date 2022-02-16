@@ -1,15 +1,13 @@
 <template>
   <!-- Footer -->
+  <div class="sloped"></div>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm">
         <!-- column for the information and event-portal logo -->
         <h5 class="title"><b>Event<span
             style="color: #DC8045">Portal</span></b></h5>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
-          atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
-          sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
-          facilis est et expedita distinctio. </p>
+        <p v-if="$route.meta['description']">{{ $route.meta['description'] }}</p>
       </div>
       <!-- column for the links -->
       <div class="col-sm">
@@ -59,18 +57,23 @@ export default {
 
 .title {
   font-weight: bold;
-  font-size: xxx-large;
+  font-size: 2rem;
 }
 
 .col-sm {
   color: white;
 }
 
+.sloped {
+  height: 200px;
+  z-index: -1;
+  clip-path: polygon(0 0, 100% 88%, 100% 100%, 0% 100%); /* This is where you change how the blue footer should cut*/
+  background-color: #00143D;
+}
+
 .container-fluid {
-  padding: 350px 120px 100px;
   background-color: #00143D;
   position: center;
-  clip-path: polygon(0 0, 100% 48%, 100% 100%, 0% 100%); /* This is where you change how the blue footer should cut*/
 }
 
 .btn {
