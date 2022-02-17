@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <!-- hide includes based on the route name -->
-        <Base v-if="!$route.meta.base" />
+        <Base v-if="!$route.meta.hideBase" />
         <router-view />
     </div>
 </template>
@@ -15,7 +15,6 @@ export default {
 </script>
 
 <style>
-@import "~bootstrap/dist/css/bootstrap.css";
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 
 #app {

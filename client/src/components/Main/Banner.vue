@@ -1,7 +1,8 @@
 <template>
   <div class="banner-image">
     <div class="banner-text">
-      <h1>{{ $route.name }}</h1>
+      <h1 v-if="$route.meta['viewTitle']">{{ $route.meta['viewTitle'] }}</h1>
+      <p v-if="$route.meta['description']">{{ $route.meta['description'] }}</p>
     </div>
   </div>
 </template>
@@ -29,5 +30,11 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .banner-image {
+    height: 250px;
+  }
 }
 </style>

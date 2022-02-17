@@ -7,8 +7,8 @@
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav ml-auto">
+      <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end">
+        <div class="navbar-nav ml-auto mb-2 mb-lg-0">
           <NavbarItem/>
         </div>
       </div>

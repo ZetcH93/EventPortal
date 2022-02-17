@@ -12,33 +12,56 @@ const routes = [
         path: "/",
         name: "Home",
         component: Home,
+        meta: {
+            viewTitle: "Welcome to the Event Portal!",
+            description:
+                "Find new organizations to join, upcoming events or news!",
+        },
     },
     {
         path: "/about",
         name: "About",
         component: About,
+        meta: {
+            title: "About",
+            viewTitle: "About",
+        },
     },
     {
         path: "/news",
         name: "News",
         component: News,
+        meta: {
+            title: "News",
+            viewTitle: "News",
+        },
     },
     {
         path: "/organizations",
         name: "Organizations",
         component: Organizations,
+        meta: {
+            title: "Organizations",
+            viewTitle: "Organizations",
+        },
     },
     {
         path: "/contact",
         name: "Contact",
         component: Contact,
+        meta: {
+            title: "Contact",
+            viewTitle: "Contact",
+        },
     },
     {
         path: "/login",
         name: "Login",
         component: Login,
         meta: {
-            base: true,
+            hideBase: true,
+            title: "Login",
+            viewTitle: "Login",
         },
     },
     {
@@ -46,7 +69,9 @@ const routes = [
         name: "Register",
         component: Register,
         meta: {
-            base: true,
+            hideBase: true,
+            title: "Login",
+            viewTitle: "Register",
         },
     },
 ];
@@ -54,6 +79,11 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+});
+
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title || "EventPortal";
+    next();
 });
 
 export default router;
