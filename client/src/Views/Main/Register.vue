@@ -3,7 +3,7 @@
         <div class="row d-flex align-items-center justify-content-center h-100">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <h1 class="font-weight-bold mt-3">
-                    Event<span class="logo">Portal</span>
+                    Event<span class="logo-span">Portal</span>
                 </h1>
                 <div class="card my-5 border-0">
                     <div class="card-body rounded shadow-sm">
@@ -60,7 +60,8 @@
                                 value="Register"
                                 class="btn btn-primary btn-block"
                             />
-                            <p class="text-center mt-3">OR</p>
+                            <!-- oauth -->
+                            <!--  <p class="text-center mt-3">OR</p>
                             <div class="d-grid gap-2 mt-3 mb-4">
                                 <a
                                     href="#"
@@ -74,7 +75,8 @@
                                     ><i class="fa-brands fa-facebook mr-2"></i
                                     >Sign up with Facebook</a
                                 >
-                            </div>
+                            </div> -->
+                            <!-- // oauth -->
                             <div
                                 class="d-flex justify-content-between align-items-center mb-4 mt-3"
                             >
@@ -84,7 +86,6 @@
                                         class="form-check-input"
                                         type="checkbox"
                                         value=""
-                                        id="form1Example3"
                                         checked
                                     />
                                     <label class="form-check-label"
@@ -122,6 +123,7 @@ export default {
             console.log(this.user);
         },
     },
+    /* for changing body background-color inside a scoped style */
     created() {
         document.body.style.background = "#f5f7fb";
     },
