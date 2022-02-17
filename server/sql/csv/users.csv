@@ -1,0 +1,4 @@
+"id","first_name","last_name","email","password","phone_number","adress","access_token","eventportalAdmin"
+1,"Super","Admin","super.admin@gmail.com","$2a$12$p6a6uJAub3eH8DN3s9ifm.CnLux1pTfDuBrKdoR60tgsFrVJJKzoS","",1,
+2,"John","Doe","super.admin@gmail.com","$2a$12$p6a6uJAub3eH8DN3s9ifm.CnLux1pTfDuBrKdoR60tgsFrVJJKzoS","",0,
+3,"Jane","Doe","super.admin@gmail.com","$2a$12$p6a6uJAub3eH8DN3s9ifm.CnLux1pTfDuBrKdoR60tgsFrVJJKzoS","",0,
