@@ -16,10 +16,11 @@ FROM `event` AS e
 		ON o.id = e.org_id
 WHERE `start_date` BETWEEN curdate() AND (SELECT DATE_ADD(curdate(), INTERVAL 30 DAY ))           -- <---- Fungerar detta
 GROUP BY e.event_name
-LIMIT 10;
+LIMIT a_limit;
 END
 ;;
 DELIMITER ;
+
 
 -- (OM iNTE TESTA DENNA )
 -- Find events scheduled between one week ago and 3 days from now:
@@ -91,7 +92,7 @@ CREATE PROCEDURE `create_event`(
     a_visibility INT
 )
 BEGIN
-INSERT INTO organization(
+INSERT INTO `event`(
     `org_id`,
     `event_name`,
     `price`,
@@ -117,6 +118,76 @@ END
 ;;
 DELIMITER ;
 
+
+-- -----------------------------------------------------
+-- procedure `update_event`. Inserts a new event into DB
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS `update_event`;
+DELIMITER ;;
+CREATE PROCEDURE `update_event`(
+    a_event_id INT,
+    a_org_id INT(32),
+    a_name VARCHAR(32),
+    a_price INT(32),
+    a_description VARCHAR(32),
+    a_picture VARCHAR(256),
+    a_start_date TIMESTAMP,
+    a_end_date TIMESTAMP,
+    a_location VARCHAR(64),
+    a_published BOOLEAN,
+    a_visibility INT
+)
+BEGIN
+UPDATE `event`
+    SET `org_id`= a_org_id,
+    `event_name`= a_name,
+    `price`= a_price,
+    `description`= a_description,
+    `picture`= a_picture,
+    `start_date`= a_start_date,
+    `end_date`= a_end_date,
+    `location`= a_location,
+    `published`= a_published,
+    `visibility` = a_visibility
+    WHERE id = a_event_id
+    ;
+END
+;;
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure `delete_event`. Inserts a new event into DB
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS `delete_event`;
+DELIMITER ;;
+CREATE PROCEDURE `delete_event`(
+    a_event_id INT
+)
+BEGIN
+UPDATE `event`
+    SET `deleted`= CURRENT_TIMESTAMP(),
+    WHERE id = a_event_id
+    ;
+END
+;;
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure `buy_ticket`. Inserts a new payment into DB
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS `buy_ticket`;
+DELIMITER ;;
+CREATE PROCEDURE `buy_ticket`(
+    a_org_id INT,
+    a_event_id INT,
+    a_user_id INT
+)
+BEGIN
+INSERT INTO `payment`(`org_id`, `event_id`, `user_id`)
+VALUES(a_org_id, a_event_id, a_user_id);
+END
+;;
+DELIMITER ;
 
 -- -----------------------------------------------------
 -- procedure `get_all_organizations`. Fetches all organizations from DB
@@ -250,6 +321,124 @@ SELECT
         INNER JOIN `permission` AS p ON u.permission_id = p.id
     WHERE u.user_id = `a_user_id`
     AND u.org_id = `a_org_id`;
+END
+;;
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure `get_org_members`. Fetches all members from an org  
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS `get_org_members`;
+DELIMITER ;;
+CREATE PROCEDURE `get_org_members`(
+    `a_org_id` INT
+)
+BEGIN
+SELECT
+    u.id AS `UserID`,
+    u.first_name AS `FirstName`,
+    u.last_name AS `LastName`,
+    u.email AS `Email`,
+    u.phone_number AS `PhoneNumber`,
+    u.adress AS `Adress`,
+    m.date_joined AS `DateJoined`,
+    m.expiry_date AS `ExpireDate`,
+    m.has_paid AS `PaymentStatus`   
+    FROM `users` AS u
+        INNER JOIN `membership` AS m ON u.id = m.user_id
+        INNER JOIN `organization` AS o ON o.id = m.org_id
+    WHERE o.id = `a_org_id`
+END
+;;
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure `get_one_member`. Fetches one member by id  
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS `get_one_member`;
+DELIMITER ;;
+CREATE PROCEDURE `get_one_member`(
+    `a_user_id` INT
+)
+BEGIN
+SELECT
+    u.id AS `UserID`,
+    u.first_name AS `FirstName`,
+    u.last_name AS `LastName`,
+    u.email AS `Email`,
+    u.phone_number AS `PhoneNumber`,
+    u.adress AS `Adress`,
+    o.name AS `Organization`,
+    m.date_joined AS `DateJoined`,
+    m.expiry_date AS `ExpireDate`,
+    m.has_paid AS `PaymentStatus` 
+    FROM `users` AS u
+        INNER JOIN `membership` as m ON m.user_id = u.id
+        INNER JOIN `organizaion` as o ON o.org_id = m.org_id
+    WHERE u.id = `a_user_id`
+END
+;;
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- procedure `get_all_news`. Fetches all the news
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS `get_all_news`;
+DELIMITER ;;
+CREATE PROCEDURE `get_all_news`()
+BEGIN
+SELECT * FROM `news`;
+END
+;;
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure `get_one_news`. Fetches one news based on id
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS `get_one_news`;
+DELIMITER ;;
+CREATE PROCEDURE `get_one_news`(
+    a_id INT
+)
+BEGIN
+SELECT * FROM `news` WHERE `id` = a_id;
+END
+;;
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure `update_news`. Inserts a new event into DB
+-- -----------------------------------------------------
+    newsID,
+    name,
+    description,
+    picture,
+    author,
+    published,
+    visibility
+DROP PROCEDURE IF EXISTS `update_news`;
+DELIMITER ;;
+CREATE PROCEDURE `update_news`(
+    a_news_id INT,
+    a_news_name VARCHAR(32),
+    a_description VARCHAR(256),
+    a_picture VARCHAR(256),
+    a_author VARCHAR(64),
+    a_published BOOLEAN,
+    a_visibility INT
+)
+BEGIN
+UPDATE `news`
+    SET
+    `news_name`= a_news_name,
+    `description`= a_description,
+    `picture`= a_picture,
+    `author`= a_author,
+    `published`= a_published,
+    `visibility` = a_visibility
+    WHERE `id` = a_news_id
+    ;
 END
 ;;
 DELIMITER ;

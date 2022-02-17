@@ -5,6 +5,8 @@ module.exports = {
     getAllEvents: getAllEvents,
     getOneEvent: getOneEvent,
     createEvent: createEvent,
+    updateEvent: updateEvent,
+    buyTicket: buyTicket,
     getAllOrganizations: getAllOrganizations,
     getOneOrganization: getOneOrganization,
     createOrganization: createOrganization,
@@ -12,7 +14,10 @@ module.exports = {
     checkUser: checkUser,
     createAccount: createAccount,
     getUserPermissions: getUserPermissions,
-    getOrgMembers: getOrgMembers
+    getOrgMembers: getOrgMembers,
+    getAllNews: getAllNews,
+    getOneNews: getOneNews,
+    updateNews: updateNews
 };
 
 const mysql = require('promise-mysql');
@@ -85,7 +90,8 @@ async function createEvent(
     visibility) {
     let sql = `CALL create_event(?,?,?,?,?,?,?,?,?,?);`;
 
-    await db.query(sql, [orgId,
+    await db.query(sql, [
+        orgId,
         name,
         price,
         description,
@@ -95,6 +101,56 @@ async function createEvent(
         location,
         published,
         visibility]);
+}
+
+/*
+* Updates an existing Event
+*/
+async function updateEvent(
+    eventID,
+    orgId,
+    name,
+    price,
+    description,
+    picture,
+    startDate,
+    endDate,
+    location,
+    published,
+    visibility) {
+    let sql = `CALL update_event(?,?,?,?,?,?,?,?,?,?,?);`;
+
+    await db.query(sql, [
+        eventID,
+        orgId,
+        name,
+        price,
+        description,
+        picture,
+        startDate,
+        endDate,
+        location,
+        published,
+        visibility]);
+}
+
+/*
+* Marks event as deleted. "Deleted" column gets the value now()
+*/
+async function deleteEvent(eventId) {
+    let sql = `CALL delete_event(?);`;
+
+    await db.query(sql, [eventId]);
+}
+
+
+/*
+* When user has paid for a ticket
+*/
+async function buyTicket(orgId, eventId, userId) {
+    let sql = `CALL buy_ticket(?,?);`;
+
+    await db.query(sql, [orgId, eventId, userId]);
 }
 // -------------------------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------------------
@@ -210,6 +266,57 @@ async function getOrgMembers(orgId) {
 }
 
 
+async function getOneMember(id) {
+    let sql = `CALL get_one_member(?);`;
 
+    let res = await db.query(sql, [id]);
+
+    return res[0];
+}
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------------
+// ------------------------------------------NEWS ENDPOINT------------------------------------------
+
+// fetch all rows from DB
+async function getAllNews() {
+    let sql = `CALL get_all_news();`;
+
+    let res = await db.query(sql);
+
+    return res[0];
+}
+
+// fetch one row from DB
+async function getOneNews(id) {
+    let sql = `CALL get_one_news(?);`;
+
+    let res = await db.query(sql, [id]);
+
+    return res[0];
+}
+
+// change one row in DB
+async function updateNews(
+    newsID,
+    name,
+    description,
+    picture,
+    author,
+    published,
+    visibility
+) {
+    let sql = `CALL update_news(?,?,?,?,?,?,?);`;
+
+    await db.query(sql, [newsID,
+        name,
+        description,
+        picture,
+        author,
+        published,
+        visibility]);
+
+}
 // -------------------------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------------------

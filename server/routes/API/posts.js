@@ -26,14 +26,15 @@ router.get('/organization/:id', async (req, res) => {
 
 // Add an organisation to db.
 router.post('/organization', async (req, res) => {
-    await DBManager.createOrganization(req.params.org_nr,
-        req.params.name,
-        req.params.description,
-        req.params.logo,
-        req.params.banner,
-        req.params.colours,
-        req.params.membership_fee,
-        req.params.admin_fee);
+    await DBManager.createOrganization(
+        req.body.org_nr,
+        req.body.name,
+        req.body.description,
+        req.body.logo,
+        req.body.banner,
+        req.body.colours,
+        req.body.membership_fee,
+        req.body.admin_fee);
 
     res.send(200).json;
 });
@@ -62,7 +63,7 @@ router.get('/event/:id', async (req, res) => {
 
 // Creates one event
 router.post('/event', async (req, res) => {
-    let args = req.params;
+    let args = req.body;
 
     await DBManager.createEvent(args.orgId,
         args.name,
@@ -80,6 +81,48 @@ router.post('/event', async (req, res) => {
 
     res.send(201).json();
 });
+
+// Updates one event
+router.put('/event', async (req, res) => {
+    let args = req.body;
+
+    await DBManager.updateEvent(
+        args.eventId,
+        args.orgId,
+        args.name,
+        args.price,
+        args.description,
+        args.picture,
+        args.startDate,
+        args.endDate,
+        args.location,
+        args.published,
+        args.visibility);
+    // If created status = ok
+    // else status = error
+    // {data: data.status}
+
+    res.send(201).json();
+});
+
+// buy event ticket
+router.post('/event/:id', async (req, res) => {
+    let args = req.body;
+
+    await DBManager.buyTicket(args.orgId, req.params.id, args.userId);
+
+    res.send(201).json();
+});
+
+// Mark an event deleted.
+router.post('/event/:id', async (req, res) => {
+    let args = req.params;
+
+    await DBManager.deleteEvent(args.eventId);
+
+    res.send(201).json();
+});
+
 // -------------------------------------------------------------------------------------------------
 
 // -----------------------------------LOGIN ENDPOINT------------------------------------------------
@@ -158,44 +201,78 @@ router.post('/permissions', async (req, res) => {
 // -------------------------------------------------------------------------------------------------
 // ---------------------------------MEMBERS ENDPOINT------------------------------------------------
 // List all members for a user in an org 
-router.get('/member', async (req, res) => {
+router.get('/member/:orgId', async (req, res) => {
     let data = {
-        members: await DBManager.getOrgMembers(req.params.org_id)
+        members: await DBManager.getOrgMembers(req.params.orgId)
     };
 
     res.send(200).json({data: data.members});
 });
 
 
-// put? D:
-router.put('/permissions', async (req, res) => {
+// Gets one user by id
+router.get('/member/:id', async (req, res) => {
     let data = {
-        event: await DBManager.getEvent(req.params.id)
+        member: await DBManager.getOneMember(req.params.orgId)
     };
 
-    res.send(200).json({data: data.event});
+    res.send(200).json({data: data.member});
 });
 
 
-// Creates a new permission
-router.post('/permissions', async (req, res) => {
+// Adds a member to a organization
+router.post('/member', async (req, res) => {
     let args = req.params;
 
-    await DBManager.createEvent(args.orgId,
-        args.name,
-        args.price,
-        args.description,
-        args.picture,
-        args.startDate,
-        args.endDate,
-        args.location,
-        args.published,
-        args.visibility);
-    // If created status = ok
-    // else status = error
-    // {data: data.status}
-
+    await DBManager.addMember(orgId)
+   
     res.send(201).json();
 });
 // -------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------------
+// ------------------------------------NEWS ENDPOINT------------------------------------------------
+
+// Get all news
+router.get('/news', async (req, res) => {
+    let data = {
+        news: await DBManager.getAllNews()
+    };
+
+    res.send(200).json({data: data.news});
+});
+
+// Get specific news
+router.get('/news/:id', async (req, res) => {
+    let data = {
+        news: await DBManager.getOneNews(req.params.id)
+    };
+
+    res.send(200).json({data: data.news});
+});
+
+router.post('/news/:id', async (req, res) => {
+    let newsID = req.params.id;
+    let name = req.body.name;
+    let description = req.body.description;
+    let picture = req.body.picture;
+    let author = req.body.author;
+    let published = req.body.published;
+    let visibility = req.body.visibility;
+
+    await DBManager.updateNews(
+        newsID,
+        name,
+        description,
+        picture,
+        author,
+        published,
+        visibility
+        );
+
+    res.send(200).json();
+});
+// -------------------------------------------------------------------------------------------------
+
+
 module.exports = router;

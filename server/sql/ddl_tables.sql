@@ -80,9 +80,6 @@ CREATE TABLE `org_applicant`(
     `user_id` INT,
     `date_applied` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     `org_name` VARCHAR (32) NOT NULL,
-    `chairman_name` VARCHAR (32) NOT NULL,
-    `chairman_email` VARCHAR (32) NOT NULL,
-    `chairman_phone` INT (32) NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
     FOREIGN KEY (`org_id`) REFERENCES `organization`(`id`)
@@ -106,6 +103,7 @@ CREATE TABLE `event`(
     `location` VARCHAR (32),
     `published` BOOLEAN NOT NULL DEFAULT false,
     `visibility` INT NOT NULL DEFAULT 0, -- 0 = members only, 1 = logged in users only, 2 = ALL users
+    `deleted` DATETIME,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`org_id`) REFERENCES `organization`(`id`)
 )
@@ -135,14 +133,16 @@ COLLATE = utf8_swedish_ci;
 
 -- -----------------------------------------------------
 -- Table `eventportalen`.`payment`
+--
+-- org_id Do we need it or can we delete it?
 -- -----------------------------------------------------
 CREATE TABLE `payment`(
     `id` INT NOT NULL AUTO_INCREMENT,
     `org_id` INT,
     `user_id` INT,
     `event_id` INT,
-    `date_paid` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-    `payment_for` VARCHAR (32) NOT NULL,
+    `date_paid` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    -- `payment_for` VARCHAR (32) NOT NULL,
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
     FOREIGN KEY (`org_id`) REFERENCES `organization`(`id`),
     FOREIGN KEY (`event_id`) REFERENCES `event`(`id`),
