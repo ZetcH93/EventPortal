@@ -127,7 +127,7 @@ router.post('/event/:id', async (req, res) => {
 
 // -----------------------------------LOGIN ENDPOINT------------------------------------------------
 router.post('/login', async (req, res) => {
-    let args = req.params;
+    let args = req.body;
 
     let data = {
         user: await DBManager.login(args.email, args.password)
