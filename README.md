@@ -29,6 +29,20 @@ npm run build
 npm run lint
 ```
 
-## Starting the backend
+## Backend Setup
 
-### Add information here
+```
+cd server
+```
+
+#### Run the bash script to create the database and tables, procedure etc.
+
+```
+bash sql/reset_eventportal.bash
+```
+
+#### Start the Backend server
+
+```
+npm start
+```
