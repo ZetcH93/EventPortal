@@ -16,8 +16,7 @@ const routes = [
             viewTitle: 'Welcome to the Event Portal!',
             description: 'Find new organizations to join, upcoming events or news!'
         }
-    },
-    {
+    }, {
         path: "/about",
         name: "About",
         component: About,
@@ -53,6 +52,7 @@ const routes = [
             viewTitle: 'Contact',
         }
     },
+
     {
         path: "/login",
         name: "Login",

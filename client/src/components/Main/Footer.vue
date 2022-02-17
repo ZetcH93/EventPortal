@@ -82,4 +82,10 @@ export default {
   background-color: #DC8045;
   color: white;
 }
+
+@media only screen and (max-width: 600px) {
+  .sloped {
+    height: 50px;
+  }
+}
 </style>
