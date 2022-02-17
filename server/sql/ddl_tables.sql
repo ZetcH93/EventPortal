@@ -2,8 +2,7 @@ USE eventportalen;
 
 
 DROP TABLE IF EXISTS `user2permission`;
-DROP TABLE IF EXISTS `permission`;     -- <--- Solution 1 tas bort annars
-
+DROP TABLE IF EXISTS `permission`;
 DROP TABLE IF EXISTS `event_attendee`;
 DROP TABLE IF EXISTS `membership_applicant`;
 DROP TABLE IF EXISTS `user_log`;
@@ -11,7 +10,6 @@ DROP TABLE IF EXISTS `payment`;
 DROP TABLE IF EXISTS `news`;
 DROP TABLE IF EXISTS `event`;
 DROP TABLE IF EXISTS `org_applicant`;
-
 DROP TABLE IF EXISTS `membership`;
 DROP TABLE IF EXISTS `organization`;
 DROP TABLE IF EXISTS `users`;
@@ -28,7 +26,7 @@ CREATE TABLE `users`(
     `phone_number` INT(32),
     `adress` VARCHAR(32),
     `access_token` VARCHAR(100),
-	`eventportalAdmin` BOOLEAN NOT NULL DEFAULT 0,
+	`eventportal_admin` BOOLEAN NOT NULL DEFAULT 0,
     PRIMARY KEY(`id`),
     UNIQUE(`email`)
     )
@@ -200,57 +198,33 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_swedish_ci;
 
--- -- -----------------------------------------------------
--- -- Table `eventportalen`.`permission`                   <--------------------------------------------- Solution 1
--- -- -----------------------------------------------------
--- CREATE TABLE `permission`(
---     `id` INT NOT NULL AUTO_INCREMENT,
---     `type` VARCHAR(32), 
---     `description` VARCHAR(255),
---     PRIMARY KEY (`id`),
--- )
--- ENGINE = InnoDB
--- DEFAULT CHARACTER SET = utf8
--- COLLATE = utf8_swedish_ci;
-
-
--- -- -----------------------------------------------------
--- -- Table `eventportalen`.`user2permissions`             <--------------------------------------------- Solution 1
--- -- -----------------------------------------------------
--- CREATE TABLE `user2permission`(
---     `id` INT NOT NULL AUTO_INCREMENT,
---     `user_id` INT,
---     `org_id` INT,
---     `permission_id` INT, 
---     PRIMARY KEY (`id`),
---     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
---     FOREIGN KEY (`org_id`) REFERENCES `organization`(`id`),
---     FOREIGN KEY (`permission_id`) REFERENCES `permission`(`id`)
--- )
--- ENGINE = InnoDB
--- DEFAULT CHARACTER SET = utf8
--- COLLATE = utf8_swedish_ci;
-
-
 -- -----------------------------------------------------
--- Table `eventportalen`.`user2permissions`             <--------------------------------------------- Solution 2
+-- Table `eventportalen`.`permission`                   
 -- -----------------------------------------------------
-CREATE TABLE `user2permission`(
+CREATE TABLE `permission`(
     `id` INT NOT NULL AUTO_INCREMENT,
-    `user_id` INT,
-    `org_id` INT,
-    `permission_one` BOOLEAN, -- Association info
-    `permission_two` BOOLEAN, -- Create board minutes and change them
-    `permission_three` BOOLEAN, -- Read board minutes only
-    `permission_four` BOOLEAN, -- Manage association memebers
-    `permission_five` BOOLEAN, -- View association members payment status
-    `permission_six` BOOLEAN, -- Manage events
-    `permission_seven` BOOLEAN, -- View Events
-    `permission_eight` BOOLEAN, -- Manage news
+    `type` VARCHAR(32), 
+    `description` VARCHAR(255),
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
-    FOREIGN KEY (`org_id`) REFERENCES `organization`(`id`)
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_swedish_ci;
+
+
+ -- -----------------------------------------------------
+ -- Table `eventportalen`.`user2permissions`             
+ -- -----------------------------------------------------
+ CREATE TABLE `user2permission`(
+     `id` INT NOT NULL AUTO_INCREMENT,
+     `user_id` INT,
+     `org_id` INT,
+     `permission_id` INT, 
+     PRIMARY KEY (`id`),
+     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+     FOREIGN KEY (`org_id`) REFERENCES `organization`(`id`),
+     FOREIGN KEY (`permission_id`) REFERENCES `permission`(`id`)
+ )
+ ENGINE = InnoDB
+ DEFAULT CHARACTER SET = utf8
+ COLLATE = utf8_swedish_ci;

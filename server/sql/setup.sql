@@ -20,3 +20,6 @@ GRANT ALL PRIVILEGES ON eventportalen.* TO 'eventportalmaster'@'%' WITH GRANT OP
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `eventportalen` DEFAULT CHARACTER SET utf8 ;
 USE `eventportalen` ;
+
+SET
+    GLOBAL local_infile = 1;
