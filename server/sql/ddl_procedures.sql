@@ -1,22 +1,22 @@
+USE eventportalen;
+
 -- -----------------------------------------------------
 -- procedure `get__ten_events`. Fetches 10 events from current date and one month ahead
 -- -----------------------------------------------------
 DROP PROCEDURE IF EXISTS `get_ten_events`;
 DELIMITER ;;
-CREATE PROCEDURE `get_ten_events`(
-
-)
+CREATE PROCEDURE `get_ten_events`()
 BEGIN
 SELECT
 	e.*,
     o.name AS `org_name`,
-    o.logo AS `org_logo`,
+    o.logo AS `org_logo`
 FROM `event` AS e
 	INNER JOIN `organization` AS o
 		ON o.id = e.org_id
+WHERE `start_date` BETWEEN curdate() AND (SELECT DATE_ADD(curdate(), INTERVAL 30 DAY ))           -- <---- Fungerar detta
 GROUP BY e.event_name
-WHERE `start_date` BETWEEN curdate() AND (SELECT dateadd(curdate() + 30 DAY ))           -- <---- Fungerar detta
-LIMIT 10
+LIMIT 10;
 END
 ;;
 DELIMITER ;
@@ -34,17 +34,16 @@ DELIMITER ;
 -- -----------------------------------------------------
 DROP PROCEDURE IF EXISTS `get_all_events`;
 DELIMITER ;;
-CREATE PROCEDURE `get_all_events`(
-)
+CREATE PROCEDURE `get_all_events`()
 BEGIN
 SELECT
 	e.*,
     o.name AS `org_name`,
-    o.logo AS `org_logo`,
+    o.logo AS `org_logo`
 FROM `event` AS e
 	INNER JOIN `organization` AS o
 		ON o.id = e.org_id
-GROUP BY e.event_name
+GROUP BY e.event_name;
 END
 ;;
 DELIMITER ;
@@ -63,26 +62,17 @@ BEGIN
 SELECT
 	e.*,
     o.name AS `org_name`,
-    o.logo AS `org_logo`,
+    o.logo AS `org_logo`
 FROM `event` AS e
 	INNER JOIN `organization` AS o
 		ON o.id = e.org_id
-GROUP BY e.event_name
 WHERE e.id = a_id
+GROUP BY e.event_name;
 END
 ;;
 DELIMITER ;
 
-orgId,
-name,
-price,
-description,
-picture,
-startDate,
-endDate,
-location,
-published,
-visibility
+
 -- -----------------------------------------------------
 -- procedure `create_event`. Inserts a new event into DB
 -- -----------------------------------------------------
@@ -122,7 +112,7 @@ VALUES (a_org_id,
     a_end_date,
     a_location,
     a_published,
-    a_visibility)
+    a_visibility);
 END
 ;;
 DELIMITER ;
@@ -139,7 +129,7 @@ BEGIN
 SELECT
 	o.*
 FROM `organization` AS o
-GROUP BY o.name
+GROUP BY o.name;
 END
 ;;
 DELIMITER ;
@@ -156,7 +146,7 @@ BEGIN
 SELECT
 	*
 FROM `organization` 
-WHERE `id` = `a_id`
+WHERE `id` = `a_id`;
 END
 ;;
 DELIMITER ;
@@ -178,7 +168,7 @@ CREATE PROCEDURE `create_organization`(
 )
 BEGIN
 INSERT INTO organization(`org_nr`, `name`, `description`, `logo`, `banner`, `colours`, `membership_fee`, `admin_fee`) 
-VALUES (a_org_nr, a_name, a_description, a_logo, a_banner, a_colours, a_membership_fee, a_admin_fee)
+VALUES (a_org_nr, a_name, a_description, a_logo, a_banner, a_colours, a_membership_fee, a_admin_fee);
 END
 ;;
 DELIMITER ;
@@ -196,7 +186,7 @@ BEGIN
 SELECT
 	*
 FROM `users` 
-WHERE `email` = `a_email` AND `password` = `a_password`
+WHERE `email` = `a_email` AND `password` = `a_password`;
 END
 ;;
 DELIMITER ;
@@ -223,7 +213,7 @@ INSERT INTO `users`(
     `password`,
     `phone_number`,
     `adress`,
-    `access_token`,
+    `access_token`
     )
 VALUES (
     a_first_name,
@@ -233,7 +223,7 @@ VALUES (
     a_phone_number,
     a_adress,
     a_access_token
-    )
+    );
 END
 ;;
 DELIMITER ;
@@ -259,7 +249,7 @@ SELECT
     FROM `user2permission` AS u
         INNER JOIN `permission` AS p ON u.permission_id = p.id
     WHERE u.user_id = `a_user_id`
-    AND u.org_id = `a_org_id`
+    AND u.org_id = `a_org_id`;
 END
 ;;
 DELIMITER ;

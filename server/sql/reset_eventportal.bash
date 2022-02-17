@@ -15,4 +15,4 @@ mysql -ueventportalmaster -pteamkingshit eventportalen < $file > /dev/null
 
 file="insert.sql"
 echo ">>> Inserts into all the tables using the file '($file)'"
-mysql -ueventportalmaster -pteamkingshit < $file > /dev/null
+mysql -ueventportalmaster -pteamkingshit eventportalen < $file > /dev/null

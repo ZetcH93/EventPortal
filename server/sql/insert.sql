@@ -1,7 +1,7 @@
 --
 -- users
 --
-LOAD DATA LOCAL INFILE 'csv/user.csv'
+LOAD DATA LOCAL INFILE 'csv/users.csv'
 INTO TABLE users
 CHARSET utf8
 FIELDS
@@ -15,7 +15,7 @@ IGNORE 1 LINES
 --
 -- organization
 --
-LOAD DATA LOCAL INFILE 'csv/user.csv'
+LOAD DATA LOCAL INFILE 'csv/organization.csv'
 INTO TABLE organization
 CHARSET utf8
 FIELDS
