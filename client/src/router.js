@@ -1,11 +1,11 @@
-import {createWebHistory, createRouter} from "vue-router";
+import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/Views/Main/Home";
 import About from "@/Views/Main/About";
 import News from "@/Views/Main/News";
 import Organizations from "@/Views/Main/Organizations";
 import Contact from "@/Views/Main/Contact";
 import Login from "@/Views/Main/Login";
-
+import Register from "@/Views/Main/Register";
 
 const routes = [
     {
@@ -37,6 +37,17 @@ const routes = [
         path: "/login",
         name: "Login",
         component: Login,
+        meta: {
+            base: true,
+        },
+    },
+    {
+        path: "/register",
+        name: "Register",
+        component: Register,
+        meta: {
+            base: true,
+        },
     },
 ];
 

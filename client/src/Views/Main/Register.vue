@@ -8,9 +8,28 @@
                 <div class="card my-5 border-0">
                     <div class="card-body rounded shadow-sm">
                         <h5 class="card-title text-center font-weight-bold p-4">
-                            Login
+                            Register
                         </h5>
-                        <form class="form-signin" @submit.prevent="userLogin">
+                        <form
+                            class="form-signin"
+                            @submit.prevent="registerUser"
+                        >
+                            <div class="mb-3 form-label-group">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="First name..."
+                                    v-model="user.firstName"
+                                />
+                            </div>
+                            <div class="mb-3 form-label-group">
+                                <input
+                                    type="text"
+                                    v-model="user.lastName"
+                                    class="form-control"
+                                    placeholder="Last Name..."
+                                />
+                            </div>
                             <div class="mb-3 form-label-group">
                                 <input
                                     type="email"
@@ -27,54 +46,34 @@
                                     placeholder="Password..."
                                 />
                             </div>
-                            <div
-                                class="d-flex justify-content-between align-items-center mb-4"
-                            >
-                                <!-- Checkbox -->
-                                <div class="form-check">
-                                    <input
-                                        class="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                        id="form1Example3"
-                                        checked
-                                    />
-                                    <label
-                                        class="form-check-label"
-                                        for="form1Example3"
-                                    >
-                                        Remember me
-                                    </label>
-                                </div>
-                                <a href="#">Forgot password?</a>
-                            </div>
-                            <div class="d-grid gap-2">
+                            <div class="mb-3 form-label-group">
                                 <input
-                                    type="submit"
-                                    value="Login"
-                                    class="btn btn-primary btn-block"
-                                    id="sign-in"
+                                    type="password"
+                                    v-model="user.repeatPassword"
+                                    class="form-control"
+                                    placeholder="Repeat Password..."
                                 />
-                                <a
-                                    href="/register"
-                                    class="btn btn-secondary btn-block"
-                                    >Register</a
-                                >
                             </div>
+
+                            <input
+                                type="submit"
+                                value="Register"
+                                class="btn btn-primary btn-block"
+                            />
                             <p class="text-center mt-3">OR</p>
-                            <div class="d-grid gap-2 mt-3">
-                                <button
+                            <div class="d-grid gap-2 mt-3 mb-4">
+                                <a
+                                    href="#"
                                     class="btn btn-block btn-outline-danger"
+                                    ><i class="fa-brands fa-google mr-2"></i
+                                    >Sign up with Google</a
                                 >
-                                    <i class="fa-brands fa-google mr-2"></i
-                                    >Login with Google
-                                </button>
-                                <button
+                                <a
+                                    href="#"
                                     class="btn btn-block btn-outline-primary"
+                                    ><i class="fa-brands fa-facebook mr-2"></i
+                                    >Sign up with Facebook</a
                                 >
-                                    <i class="fa-brands fa-facebook mr-2"></i
-                                    >Login with Google
-                                </button>
                             </div>
                             <div
                                 class="d-flex justify-content-between align-items-center mb-4 mt-3"
@@ -109,13 +108,16 @@ export default {
     data() {
         return {
             user: {
+                firstName: "",
+                lastName: "",
                 email: "",
                 password: "",
+                repeatPassword: "",
             },
         };
     },
     methods: {
-        async userLogin() {
+        async registerUser() {
             // Check
             console.log(this.user);
         },
@@ -132,11 +134,5 @@ export default {
 <style lang="scss" scoped>
 body {
     background-color: #f5f7fb;
-}
-</style>
-
-<style>
-.logo {
-    color: orange;
 }
 </style>
