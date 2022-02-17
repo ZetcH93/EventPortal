@@ -25,7 +25,8 @@
         "eslint": "^8.9.0",
         "eslint-plugin-react": "^7.28.0",
         "express": "^4.17.2",
-        "javascript-style-guide": "^1.0.1"
+        "javascript-style-guide": "^1.0.1",
+        "jsonwebtoken": "^8.5.1"
     },
     "devDependencies": {
         "nodemon": "^2.0.15"

@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 
 const DBManager = require("../../src/dbmanager.js");
 
@@ -134,7 +135,9 @@ router.post('/login', async (req, res) => {
     };
 
     if (data.user.email) { // email and password was correct
-        res.send(200).json({data: data.user});
+        const token = jwt.sign(data.user, process.env.JWT_KEY);
+
+        res.send(200).json({data: data.user}, token);
     } else { // email and password was not correct
         res.send(500).json;
     }
