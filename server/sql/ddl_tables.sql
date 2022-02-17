@@ -205,7 +205,7 @@ CREATE TABLE `permission`(
     `id` INT NOT NULL AUTO_INCREMENT,
     `type` VARCHAR(32), 
     `description` VARCHAR(255),
-    PRIMARY KEY (`id`),
+    PRIMARY KEY (`id`)
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
