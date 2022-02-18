@@ -6,20 +6,16 @@
     soon.</h5>
   <br>
   <div class="container-sm ">
-    <br>
-    <div>
-
-
-    </div>
-    <div class="col-sm">
+    <div class="col-md p-4 shadow">
       <div class="mb-3">
-        <input id="exampleFormControlInput1" class="form-control" placeholder="Name" type="text">
+        <input id="exampleFormControlInput1" class="form-control" placeholder="Your name..." type="text">
       </div>
       <div class="mb-3">
-        <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="Email">
+        <input id="exampleFormControlInput2" class="form-control" placeholder="Your email..." type="email">
       </div>
       <div class="mb-3">
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="13" placeholder="Message"></textarea>
+        <textarea id="exampleFormControlTextarea1" class="form-control" placeholder="The message..."
+                  rows="13"></textarea>
       </div>
       <br>
       <div class="d-grid gap-2 col-6 mx-auto">
@@ -38,19 +34,10 @@ export default {
 </script>
 
 <style scoped>
-.container-sm {
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-
-}
 
 .btn {
   background-color: #4CAF50;
   color: white;
-}
-
-.col-sm {
-  padding: 20px;
 }
 
 </style>
