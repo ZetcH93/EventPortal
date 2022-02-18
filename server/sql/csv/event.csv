@@ -1,2 +1,2 @@
-"org_id","event_name","price","description","picture","start_date","end_date","location","published","visibility"
-"1","Snusmässa 2030","50","Dags för den årliga Snusmässan","2030-05-20 10:00:00","2030-05-21 10:00:00","Rävemåla","1","2"
+"id","org_id","event_name","price","description","picture","start_date","end_date","location","published","visibility"
+"1","1","Snusmässa 2030","50","Dags för den årliga Snusmässan","","2030-05-20 10:00:00","2030-05-21 10:00:00","Rävemåla","1","2"
