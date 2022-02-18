@@ -1,4 +1,12 @@
 "id","first_name","last_name","email","password","phone_number","adress","access_token","eventportalAdmin"
-1,"Super","Admin","super.admin@gmail.com","$2a$12$p6a6uJAub3eH8DN3s9ifm.CnLux1pTfDuBrKdoR60tgsFrVJJKzoS","",1,
-2,"John","Doe","super.admin@gmail.com","$2a$12$p6a6uJAub3eH8DN3s9ifm.CnLux1pTfDuBrKdoR60tgsFrVJJKzoS","",0,
-3,"Jane","Doe","super.admin@gmail.com","$2a$12$p6a6uJAub3eH8DN3s9ifm.CnLux1pTfDuBrKdoR60tgsFrVJJKzoS","",0,
+"1","Linus","Jyckesson","linus.jyckesson@gmail.com","Luleå","0701740633","Vulcanusgatuvägen 2, 850 66 Luleå","0","1",
+"2","Bengt","Talgoxesson","bengt.talgoxesson@gmail.com","Boden","0701740621","Adaptivevägen 10, 834 07 Boden","0","0",
+"3","Mimmi","Tulpansson","mimmi.tulpansson@gmail.com","Västerås","0701740635","Årstavägsgatan 20, 976 56 Västerås","0","0",
+"4","Thomas","Skalmansson","thomas.skalmansson@gmail.com","Varberg","0701740615","Drottninggatunvägen 27, 372 04 Varberg","0","0",
+"5","Fredrik","Skalmansson","fredrik.skalmansson@gmail.com","Varberg","0701740617","Angeredsgatanvägsgatan 38, 429 92 Varberg","0","0",
+"6","Henrik","Bofinksson","henrik.bofinksson@gmail.com","Skellefteå","0701740630","Kronobergsgatanvägsgatan 28, 227 70 Skellefteå","0","0",
+"7","Josefin","Mullvadsson","josefin.mullvadsson@gmail.com","Alingsås","0701740616","Stadsvägsgatangränd 33, 791 60 Alingsås","0","0",
+"8","Carolina","Bamsesson","carolinainho.bamsesson@gmail.com","Göteborg","0701740615","Stadsvägsgatangränd 16, 248 58 Göteborg","0","0",
+"9","Jonna","Vaktelsson","jonna.vaktelsson@gmail.com","Skellefteå","0701740633","Årstavägsgatan 19, 255 71 Skellefteå","0","0",
+"10","Sara","Domherresson","sara.domherresson@gmail.com","Boden","0701740623","Viaduktengatan 28, 320 69 Boden","0","0",
+"11","Johanna","Skalmansson","johanna.skalmansson@gmail.com","Skara","0701740624","Stadsvägsgatangränd 35, 569 35 Skara","0","0'
