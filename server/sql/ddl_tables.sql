@@ -23,7 +23,7 @@ CREATE TABLE `users`(
     `last_name` VARCHAR(32),
 	`email` VARCHAR(32),
     `password` VARCHAR(32),
-    `phone_number` INT(32),
+    `phone_number` VARCHAR(32),
     `adress` VARCHAR(32),
     `access_token` VARCHAR(100),
 	`eventportal_admin` BOOLEAN NOT NULL DEFAULT 0,
