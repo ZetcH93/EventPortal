@@ -141,7 +141,7 @@ CREATE TABLE `payment`(
     `org_id` INT,
     `user_id` INT,
     `event_id` INT,
-    `date_paid` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    `date_paid` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     -- `payment_for` VARCHAR (32) NOT NULL,
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
     FOREIGN KEY (`org_id`) REFERENCES `organization`(`id`),

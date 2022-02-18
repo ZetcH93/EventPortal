@@ -5,7 +5,9 @@ USE eventportalen;
 -- -----------------------------------------------------
 DROP PROCEDURE IF EXISTS `get_ten_events`;
 DELIMITER ;;
-CREATE PROCEDURE `get_ten_events`()
+CREATE PROCEDURE `get_ten_events`(
+    a_limit INT
+)
 BEGIN
 SELECT
 	e.*,
@@ -165,9 +167,8 @@ CREATE PROCEDURE `delete_event`(
 )
 BEGIN
 UPDATE `event`
-    SET `deleted`= CURRENT_TIMESTAMP(),
-    WHERE id = a_event_id
-    ;
+    SET `deleted`= CURRENT_TIMESTAMP()
+    WHERE id = a_event_id;
 END
 ;;
 DELIMITER ;
@@ -347,7 +348,7 @@ SELECT
     FROM `users` AS u
         INNER JOIN `membership` AS m ON u.id = m.user_id
         INNER JOIN `organization` AS o ON o.id = m.org_id
-    WHERE o.id = `a_org_id`
+    WHERE o.id = `a_org_id`;
 END
 ;;
 DELIMITER ;
@@ -375,7 +376,7 @@ SELECT
     FROM `users` AS u
         INNER JOIN `membership` as m ON m.user_id = u.id
         INNER JOIN `organizaion` as o ON o.org_id = m.org_id
-    WHERE u.id = `a_user_id`
+    WHERE u.id = `a_user_id`;
 END
 ;;
 DELIMITER ;
@@ -410,13 +411,7 @@ DELIMITER ;
 -- -----------------------------------------------------
 -- procedure `update_news`. Inserts a new event into DB
 -- -----------------------------------------------------
-    newsID,
-    name,
-    description,
-    picture,
-    author,
-    published,
-    visibility
+
 DROP PROCEDURE IF EXISTS `update_news`;
 DELIMITER ;;
 CREATE PROCEDURE `update_news`(
