@@ -7,7 +7,7 @@
         <!-- column for the information and event-portal logo -->
         <h5 class="title"><b>Event<span
             style="color: #DC8045">Portal</span></b></h5>
-        <p>The Event Portal is made for organizations and their memebers. Here you will find news, events and be able to
+        <p>The Event Portal is made for organizations and their members. Here you will find news, events and be able to
           manage your own registered organization when you have logged in.</p>
       </div>
       <!-- column for the links -->

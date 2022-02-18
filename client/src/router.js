@@ -49,6 +49,8 @@ const routes = [
                 meta: {
                     title: "Organizations",
                     viewTitle: "Organizations",
+                    description:
+                        "Here you can search the register in the area of activities you are interested in.",
                 },
             },
             {
