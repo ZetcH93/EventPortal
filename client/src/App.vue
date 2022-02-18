@@ -1,16 +1,12 @@
 <template>
     <div id="app">
-        <!-- hide includes based on the route name -->
-        <Base v-if="!$route.meta.hideBase" />
         <router-view />
     </div>
 </template>
 
 <script>
-import Base from "@/Views/Main/Base";
 export default {
     name: "App",
-    components: { Base },
 };
 </script>
 
