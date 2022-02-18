@@ -1,0 +1,33 @@
+{
+    "name": "eventportal",
+    "version": "1.0.0",
+    "description": "event portal",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "eslint": "eslint \"**/*.js\"",
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Ampheris/EventPortal.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Ampheris/EventPortal/issues"
+    },
+    "homepage": "https://github.com/Ampheris/EventPortal#readme",
+    "dependencies": {
+        "body-parser": "^1.19.1",
+        "cors": "^2.8.5",
+        "eslint": "^8.9.0",
+        "eslint-plugin-react": "^7.28.0",
+        "express": "^4.17.2",
+        "javascript-style-guide": "^1.0.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}

@@ -31,4 +31,10 @@ export default {
   transform: translate(-50%, -50%);
   color: white;
 }
+
+@media only screen and (max-width: 600px) {
+  .banner-image {
+    height: 250px;
+  }
+}
 </style>
