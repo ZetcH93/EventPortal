@@ -67,7 +67,6 @@ const routes = [
         name: "Login",
         component: Login,
         meta: {
-            hideBase: true,
             title: "Login",
             viewTitle: "Login",
         },
@@ -77,7 +76,6 @@ const routes = [
         name: "Register",
         component: Register,
         meta: {
-            hideBase: true,
             title: "Login",
             viewTitle: "Register",
         },
