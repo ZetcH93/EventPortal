@@ -24,8 +24,8 @@ CREATE TABLE `users`(
 	`email` VARCHAR(32),
     `password` VARCHAR(32),
     `phone_number` VARCHAR(32),
-    `adress` VARCHAR(32),
-    `access_token` VARCHAR(100),
+    `adress` TEXT,
+    `access_token` TEXT,
 	`eventportal_admin` BOOLEAN NOT NULL DEFAULT 0,
     PRIMARY KEY(`id`),
     UNIQUE(`email`)
