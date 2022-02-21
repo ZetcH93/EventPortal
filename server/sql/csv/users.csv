@@ -1,4 +1,12 @@
 "id","first_name","last_name","email","password","phone_number","adress","access_token","eventportalAdmin"
-1,"Super","Admin","super.admin@gmail.com","$2a$12$p6a6uJAub3eH8DN3s9ifm.CnLux1pTfDuBrKdoR60tgsFrVJJKzoS","",1,
-2,"John","Doe","super.admin@gmail.com","$2a$12$p6a6uJAub3eH8DN3s9ifm.CnLux1pTfDuBrKdoR60tgsFrVJJKzoS","",0,
-3,"Jane","Doe","super.admin@gmail.com","$2a$12$p6a6uJAub3eH8DN3s9ifm.CnLux1pTfDuBrKdoR60tgsFrVJJKzoS","",0,
+"1","Linus","Jyckesson","linus.jyckesson@gmail.com","$2a$12$pOzL34IwdiS75IFIKalEuei7Mk1S6p6LNVDaf0i95JUecdkL5opBm","0701740633","Vulcanusgatuvägen 2, 850 66 Luleå","0","1",
+"2","Bengt","Talgoxesson","bengt.talgoxesson@gmail.com","$2a$12$JgcwTcuLhF/XSGMqc6q5xuxI4YAm2vMHq/7iOOQ0oa3/msnp2Dcoe","0701740621","Adaptivevägen 10, 834 07 Boden","0","0",
+"3","Mimmi","Tulpansson","mimmi.tulpansson@gmail.com","$2a$12$N6twUQsSnIgLjYrujVQogO1/KjrlWKLY5.5awRttASQo3wo4y4TDm","0701740635","Årstavägsgatan 20, 976 56 Västerås","0","0",
+"4","Thomas","Skalmansson","thomas.skalmansson@gmail.com","$2a$12$5vAzTe2.Olu3PhJkGzLcluNmv/kfaGgbTIIUYOnEU/uaL15OFtpMu","0701740615","Drottninggatunvägen 27, 372 04 Varberg","0","0",
+"5","Fredrik","Skalmansson","fredrik.skalmansson@gmail.com","$2a$12$pBWZW08j2Cz7a0bxO25Z2.gYscCoS0Ce/vvYRttY96H97Aqm3lm6i","0701740617","Angeredsgatanvägsgatan 38, 429 92 Varberg","0","0",
+"6","Henrik","Bofinksson","henrik.bofinksson@gmail.com","$2a$12$K4v6IGFaiXLngF1gpVq3nutAbqRQJM2xrJ/BT1v1qC2ax1jjWBmoy","0701740630","Kronobergsgatanvägsgatan 28, 227 70 Skellefteå","0","0",
+"7","Josefin","Mullvadsson","josefin.mullvadsson@gmail.com","$2a$12$FUrFlD6eV0D8gTjTLVWBr.vOiLJrdTSV6JMJEEZR2zgv1dOJrBekS","0701740616","Stadsvägsgatangränd 33, 791 60 Alingsås","0","0",
+"8","Carolina","Bamsesson","carolinainho.bamsesson@gmail.com","$2a$12$wW2/f.R4Kna1KKJguFy8luFzHQViqFxFPy6BJ4GY67ND18a7MImhi","0701740615","Stadsvägsgatangränd 16, 248 58 Göteborg","0","0",
+"9","Jonna","Vaktelsson","jonna.vaktelsson@gmail.com","$2a$12$D3Cl1hEoilVJsjoX2qY1vO1pve/9L2V/632.znyseg2D9hxDy.qJW","0701740633","Årstavägsgatan 19, 255 71 Skellefteå","0","0",
+"10","Sara","Domherresson","sara.domherresson@gmail.com","$2a$12$YCuIAYchBiP2u.cOa1mmYOwRb7NkEueIj61OM1e1mwEYTrsSHNpdK","0701740623","Viaduktengatan 28, 320 69 Boden","0","0",
+"11","Johanna","Skalmansson","johanna.skalmansson@gmail.com","$2a$12$wGLKXqOofE4pBk6/P7w7ieDvyp/IBXn3k01/6H.wi7R1tkpfH3k3K","0701740624","Stadsvägsgatangränd 35, 569 35 Skara","0","0'
