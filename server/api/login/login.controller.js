@@ -2,7 +2,7 @@
  * Login controller
  */
 "use strict";
-const { compareSync, compare } = require("bcrypt");
+const { compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 
 const { getUserByEmail } = require("./login.service");
@@ -31,8 +31,8 @@ module.exports = {
                 token: token,
             });
         } else {
-            return res.status().json({
-                success: 1,
+            return res.status(204).json({
+                success: 0,
                 message: "Invalid email or password",
             });
         }
