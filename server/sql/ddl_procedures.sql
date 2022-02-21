@@ -375,7 +375,7 @@ SELECT
     m.has_paid AS `PaymentStatus` 
     FROM `users` AS u
         INNER JOIN `membership` as m ON m.user_id = u.id
-        INNER JOIN `organizaion` as o ON o.org_id = m.org_id
+        INNER JOIN `organization ` as o ON o.org_id = m.org_id
     WHERE u.id = `a_user_id`;
 END
 ;;
