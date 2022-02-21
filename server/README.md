@@ -30,12 +30,12 @@ http://localhost:1337/api
 
 ### Parameters
 
-| Param         | value         | Type       | Required |
-| ------------- | ------------- | ---------- | -------- |
-| `<firstName>` | `<firstName>` | `<string>` | yes      |
-| `<lasttName>` | `<lasttName>` | `<string>` | yes      |
-| `<email>`     | `<email>`     | `<string>` | yes      |
-| `<password>`  | `<password>`  | `<string>` | yes      |
+| Param     | value         | Type       | Required |
+| --------- | ------------- | ---------- | -------- |
+| firstName | `<firstName>` | `<string>` | yes      |
+| lasttName | `<lasttName>` | `<string>` | yes      |
+| email     | `<email>`     | `<string>` | yes      |
+| password  | `<password>`  | `<string>` | yes      |
 
 ### Response
 
