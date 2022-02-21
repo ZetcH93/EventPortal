@@ -1,8 +1,0 @@
-{
-    "host":     "localhost",
-    "user":     "eventportalmaster",
-    "database": "eventportalen",
-    "password": "teamkingshit",
-    "port": 3306,
-    "multipleStatements": true
-}
