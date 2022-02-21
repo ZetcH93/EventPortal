@@ -1,9 +1,15 @@
---
--- Setup a user, create a database and grant access for the user
--- to the database.
+DROP DATABASE IF EXISTS eventportalen;
+-- start by dropping the database
+-- Create a database
+-- Drop user if exists. 
+-- Create a user and grant all access to the user
 --
 -- Create the database 'eventportalen', but only if it does not exists.
 CREATE DATABASE IF NOT EXISTS eventportalen;
+
+USE eventportalen;
+
+DROP USER IF EXISTS 'eventportalmaster';
 
 -- Create the user 'eventportalmaster' with a backward compatible password algorithm
 -- and the password 'teamkingshit'
@@ -12,14 +18,7 @@ CREATE USER IF NOT EXISTS 'eventportalmaster'@'%'
     BY 'teamkingshit'
 ;
 
-GRANT ALL PRIVILEGES ON eventportalen.* TO 'eventportalmaster'@'%' WITH GRANT OPTION;
-
-
--- -----------------------------------------------------
--- Create schema for projoctvaccine
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `eventportalen` DEFAULT CHARACTER SET utf8 ;
-USE `eventportalen` ;
+GRANT ALL PRIVILEGES ON eventportalen.* TO 'eventportalmaster'@'%';
 
 SET
     GLOBAL local_infile = 1;

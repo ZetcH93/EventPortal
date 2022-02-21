@@ -248,17 +248,17 @@ DELIMITER ;
 -- -----------------------------------------------------
 -- procedure `login`. Fetches user data from table users based email and password
 -- -----------------------------------------------------
-DROP PROCEDURE IF EXISTS `login`;
+
+DROP PROCEDURE IF EXISTS `get_user_by_email`;
 DELIMITER ;;
-CREATE PROCEDURE `login`(
-    `a_email` VARCHAR(32),
-    `a_password` VARCHAR(32)
+CREATE PROCEDURE `get_user_by_email`(
+    `a_email` VARCHAR(32)
 )
 BEGIN
 SELECT
 	*
 FROM `users` 
-WHERE `email` = `a_email` AND `password` = `a_password`;
+WHERE `email` = `a_email`;
 END
 ;;
 DELIMITER ;
@@ -272,30 +272,13 @@ CREATE PROCEDURE `create_account`(
     a_first_name VARCHAR(32),
     a_last_name VARCHAR(32),
     a_email VARCHAR(32),
-    a_password VARCHAR(32),
-    a_phone_number INT(32),
-    a_adress VARCHAR(32),
-    a_access_token VARCHAR(32)
+    a_password TEXT
 )
 BEGIN
-INSERT INTO `users`(
-    `first_name`,
-    `last_name`,
-	`email`,
-    `password`,
-    `phone_number`,
-    `adress`,
-    `access_token`
-    )
-VALUES (
-    a_first_name,
-    a_last_name,
-    a_email,
-    a_password,
-    a_phone_number,
-    a_adress,
-    a_access_token
-    );
+INSERT INTO `users` 
+    (`first_name`,`last_name`,`email`,`password`)
+VALUES 
+    (a_first_name, a_last_name, a_email, a_password);
 END
 ;;
 DELIMITER ;
@@ -318,9 +301,10 @@ CREATE PROCEDURE `get_user_permissions`(
 BEGIN
 SELECT
     *
-    FROM `user2permission` AS u
-        INNER JOIN `permission` AS p ON u.permission_id = p.id
-    WHERE u.user_id = `a_user_id`
+FROM `user2permission` AS u
+    INNER JOIN `permission` AS p 
+        ON u.permission_id = p.id
+WHERE u.user_id = `a_user_id`
     AND u.org_id = `a_org_id`;
 END
 ;;
@@ -345,10 +329,12 @@ SELECT
     m.date_joined AS `DateJoined`,
     m.expiry_date AS `ExpireDate`,
     m.has_paid AS `PaymentStatus`   
-    FROM `users` AS u
-        INNER JOIN `membership` AS m ON u.id = m.user_id
-        INNER JOIN `organization` AS o ON o.id = m.org_id
-    WHERE o.id = `a_org_id`;
+FROM `users` AS u
+    INNER JOIN `membership` AS m 
+        ON u.id = m.user_id
+    INNER JOIN `organization` AS o 
+        ON o.id = m.org_id
+WHERE o.id = `a_org_id`;
 END
 ;;
 DELIMITER ;
@@ -373,10 +359,12 @@ SELECT
     m.date_joined AS `DateJoined`,
     m.expiry_date AS `ExpireDate`,
     m.has_paid AS `PaymentStatus` 
-    FROM `users` AS u
-        INNER JOIN `membership` as m ON m.user_id = u.id
-        INNER JOIN `organization ` as o ON o.org_id = m.org_id
-    WHERE u.id = `a_user_id`;
+FROM `users` AS u
+    INNER JOIN `membership` AS m 
+        ON m.user_id = u.id
+    INNER JOIN `organization` AS o 
+        ON m.org_id = o.org_id
+WHERE u.id = `a_user_id`;
 END
 ;;
 DELIMITER ;
