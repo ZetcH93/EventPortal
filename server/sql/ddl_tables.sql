@@ -22,7 +22,7 @@ CREATE TABLE `users`(
     `first_name` VARCHAR(32),
     `last_name` VARCHAR(32),
 	`email` VARCHAR(32),
-    `password` VARCHAR(32),
+    `password` TEXT,
     `phone_number` VARCHAR(32),
     `adress` TEXT,
     `access_token` TEXT,
@@ -44,7 +44,7 @@ CREATE TABLE `organization`(
     `description` VARCHAR(32),
     `logo` VARCHAR(256), -- image link
     `banner` VARCHAR(256), -- image link
-    `colours` VARCHAR(32) NOT NULL DEFAULT "default", -- selected theme
+    `colours` VARCHAR(32) DEFAULT "default", -- selected theme
     `membership_fee` INT(32) NOT NULL DEFAULT 0,
     `admin_fee` INT(32) NOT NULL DEFAULT 0,
     PRIMARY KEY(`id`)
@@ -61,8 +61,8 @@ CREATE TABLE `membership`(
     `org_id` INT,
     `user_id` INT,
     `date_joined` TIMESTAMP,
-    `has_paid` INT,
     `expiry_date` TIMESTAMP,
+    `has_paid` INT,
     PRIMARY KEY(`id`),
     FOREIGN KEY (`org_id`) REFERENCES `organization`(`id`),
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
